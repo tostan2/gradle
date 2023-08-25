@@ -19,14 +19,3 @@ In some cases you still want to keep the old behavior and display the suggestion
 1. To add a custom suggestion in the "Try" section of the console output your exception needs to implement `ResolutionProvider` interface.
 2. That should be it. The suggestion will be displayed in the "Try" section.
 
-### Remove generic suggestions
-
-For some scenarios it doesn't make sense to display all the generic suggestions we currently have.
-eg. `--stacktrace` for a compilation error is not helpful.
-
-To influence the generic suggestions Gradle displays, the NonGradleCause interface was introduced.
-If an exception implements this interface Gradle will not display the `--stacktrace` option.
-
-Another more targeted interface is `CompilationFailedIndicator`.
-This interface is used to indicate that the exception is caused by a compilation failure. 
-This will not show the `--stacktrace` option but it will show the `--info` option. Since this can help with parameters passed to the compiler.
